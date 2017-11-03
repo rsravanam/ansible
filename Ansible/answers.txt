@@ -1,0 +1,25 @@
+1. Write adhoc command for
+
+	Q. move file from control machine to remote machine.
+	A. ansible remote-machine -m copy -a "src=/etc/ansible/1 dest=/tmp/1"
+	
+	Q. Stop and start the services
+	A. ansible remote-machine -m service -a "name=httpd state=started"
+	
+	Q. check the disk spaces.
+	A. ansible remote-machine -a 'df -h'
+
+2. Write a playbook for install the niginx server and its dependences, make sure to apply the optimized way and best practices.
+play book
+
+3. Write a playbook to install the rabbitmq and its relevant configurations in the recommended order.
+playbook
+
+4. How Do I Copy Files Recursively Onto A Target Host? Print the defined environment variables from target host.
+# ansible ubuntu -m synchronize -a "src=/opt/test dest=/opt/test mode=pull"
+
+5. What is the command to see Inventory Vars Defined For My Host?
+ansible -m debug -a "var=hostvars['hostname']" ubuntu 
+
+6. Can you create a custom role and how to use it in a playbook, Explain with sample code.
+role

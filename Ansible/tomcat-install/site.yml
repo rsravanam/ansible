@@ -1,0 +1,12 @@
+#This playbook deploys a simple standalone Tomcat 7 server.
+---
+
+#- hosts: "{{ my_hosts | default('tomcat-server') }}"
+- hosts: my_hosts
+  remote_user: prasanth813
+  become: yes
+  become_method: sudo
+
+  roles:
+    - java
+    - tomcat

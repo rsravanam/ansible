@@ -1,0 +1,28 @@
+---
+ - hosts: ubuntu
+   become: true
+   become_user: root
+   tasks:
+   
+    - name: Adding Nginx Repository
+      apt_repository: repo='ppa:nginx/stable' state=present
+      register: ppa_repo_installed
+      
+    - name: Print PPA Repository facts
+      debug:
+        msg: "{{ ppa_repo_installed }}"
+
+    - name: Install Nginx
+      apt: pkg=nginx state=latest update_cache=true
+      when: ppa_repo_installed|success
+      register: install_nginx
+      notify:
+       - Start Nginx
+       
+    - name: Print nginx installation facts
+      debug:
+        msg: "{{ install_nginx }}"
+
+   handlers:
+    - name: Start Nginx
+      service: name=nginx state=started

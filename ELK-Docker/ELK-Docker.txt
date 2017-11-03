@@ -1,0 +1,7 @@
+Docker
+
+docker pull sravanam1242/private_docker:ubuntu-14.04
+
+docker login -u user -p pass
+
+docker run -i -t sravanam1242/private_docker:ubuntu-14.04
